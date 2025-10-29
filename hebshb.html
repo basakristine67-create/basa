@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            color: #444;
+        }
+
+        /* 🌟 Title Section */
+        h1 {
+            text-align: center;
+            color: #2b8a3e;
+            font-size: 40px;
+            margin: 30px 0 10px 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 12px;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* 🌟 Navigation bar */
+        nav {
+            background-color: #2b8a3e;
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        nav a:hover {
+            color: #b2f2bb;
+            transform: scale(1.1);
+        }
+
+        section {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* 📖 About section */
+        #about {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 💡 hobbies section */
+        #hobbies {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #b2f2bb;
+            margin: 10px auto;
+            width: 200px;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+        /* 🖼️Outputs section */
+        #outputs {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            padding: 10px;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 10px;
+            padding: 10px;
+            width: 120px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.1);
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto 5px;
+        }
+
+        video {
+            width: 300px;
+            height: 200px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* 📞 Contact section */
+        #contact {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            margin: 20px;
+            padding: 30px;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            margin-top: 15px;
+            background-color: #2b8a3e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #256c33;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🌟 Title first -->
+    <h1>My Portfolio</h1>
+
+    <!-- 🌟 Navigation Menu next -->
+    <nav>
+        <a href="#about">About Me</a>
+        <a href="#hobbies">Hobbies</a>
+        <a href="#outputs">Outputs</a>
+        <a href="#contact">Contact Me</a>
+    </nav>
+
+    <!-- 📖 About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p><p>Hi! I’m <strong>Kristine Joy Basa a BSIT student</strong>, 19 years old. I like spending my free time listening to music, watching movies, and just relaxing or sleeping. Music helps me feel calm and inspired, while movies let me explore different stories and worlds. Sleeping is my way of recharging so I can stay active and focused. I also enjoy small creative moments, like trying out new ideas or imagining fun projects. These simple hobbies keep me balanced and happy in my everyday life.</p>
+  </section>
+    </section>
+
+    <!-- 💡 Hobbies Section -->
+    <section id="hobbies">
+    <h2>My Skills</h2>
+    <ul class="skills-list">
+      <li> Listening to Music</li>
+      <li>🎬 Watching Anime</li>
+      <li>🎨 Sketch</li>
+      <li>🍔 Eating</li>
+      <li>💤 Sleeping</li>
+      <li>💻 Exploring Technology</li>
+    </ul>
+  </section>
+    <section id="picture">
+        <h2>My Pictures</h2>
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="/fwends.jpeg" alt="Picture 1">
+            <p>This is picture 1 description.</p>
+        </div>
+        <div class="gallery-item">
+            <img src="/85469027d90911a99deca5bb8332182a_0.jpeg" alt="Picture 2">
+            <p>Just a simpple day with a smile 😊.</p>
+        </div>
+        <div class="gallery-item">
+            <img src="joy.jpg" alt="Picture 3">
+            <p>We have tree planting activities 🌳.</p>
+        </div>
+        <div class="gallery-item">
+            <img src="/20250504172817510.jpg" alt="Picture 4">
+            <p>Enjoying nature with flowers 🌻.</p>
+        </div>
+    </div>
+
+        <h2>My Videos</h2>
+        <video controls>
+            <source src="/afterschool.mp4" type="video/mp4">
+        </video>
+        <video controls>
+            <source src="/VID_20251010_165436.mp4" type="video/mp4">
+        </video>
+        <video controls>
+            <source src="/lagaw.mp4" type="video/mp4">
+        </video>
+    </section>
+    <!-- Output Section -->
+  <section id="outputs">
+    <h2>My Outputs</h2>
+    <ul>
+      <li>Portfolio in Canva: <a href="https://www.canva.com/design/DAGwKK0rjqQ/zile4wDUUqdRjtRyTV0IsA/edit?" target="_blank">CLICK HERE</a></li>
+      <li>Portfolio in Figma: <a href="https://www.figma.com/proto/mpmgcphnUzPraAmP4msKph/Figma-Portfolio?node-id=1-2&starting-point-node-id=1%3A2" target="_blank">CLICK HERE</a></li>
+      <li>Figma E-Commerce: <a href="https://www.figma.com/proto/1iiU9ndhKC112MgWWcoBWd/Figma-E-commerce?node-id=1-2" target="_blank">CLICK HERE</a></li>
+    </ul>
+  </section>
+
+    <!-- 📞 Contact Section -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form action="#" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" placeholder="Enter your address" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" placeholder="Type your message..." required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+    <footer>
+    <p>© 2025 My Portfolio | Designed with ❤️ byKristine Joy M. Basa BSIT-2B</p>
+  </footer>
+
+</body>
+</html>
