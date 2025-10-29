@@ -1,293 +1,341 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>My Professional Portfolio | Kristine Joy Basa</title>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/glightbox.min.css">
 
     <style>
-        html {
-            scroll-behavior: smooth;
+        /* --- NEW BLUE/TEAL THEME COLORS --- */
+        :root {
+            --color-primary: #1C6758; /* Deep Teal/Blue */
+            --color-secondary: #3D8361; /* Medium Green/Teal */
+            --color-text: #263238; /* Dark Text */
+            --bg-gradient-start: #EBF5F0;
+            --bg-gradient-end: #FFFFFF;
+            --section-bg: #ffffff;
+            --header-footer-bg: var(--color-primary);
+        }
+        [data-theme="dark"] {
+            --color-primary: #479E75; /* Lighter primary for better visibility on dark BG */
+            --color-secondary: #3D8361;
+            --color-text: #EDEDED;
+            --bg-gradient-start: #1A1A1A; /* Darker Start */
+            --bg-gradient-end: #252525; /* Darker End */
+            --section-bg: #2F2F2F;
+            --header-footer-bg: #1A1A1A; /* Darker header/footer */
         }
 
+        /* --- CORE STYLES --- */
+        html { scroll-behavior: smooth; }
         body {
             margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #a8edea, #fed6e3);
-            color: #444;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Slightly more professional font stack */
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            color: var(--color-text);
+            line-height: 1.6;
+            transition: background 0.5s, color 0.5s;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 🌟 Balance Enhancement: Standardized section spacing/margin/padding */
+        section {
+            padding: 60px 0;
+            margin: 40px 0; /* Increased margin for more separation */
+            background-color: var(--section-bg);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        
+        /* 🌟 Balance Enhancement: Text inside sections */
+        .section-content {
+            max-width: 900px;
+            margin: 20px auto; /* Centering content max width */
+            padding: 0 20px;
+            text-align: justify;
         }
 
-        /* 🌟 Title Section */
-        h1 {
+        h1, h2 {
             text-align: center;
-            color: #2b8a3e;
-            font-size: 40px;
-            margin: 30px 0 10px 0;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 12px;
-            width: 60%;
-            margin-left: auto;
-            margin-right: auto;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            color: var(--color-primary);
+            margin-bottom: 20px;
+            font-weight: 700;
         }
-
-        /* 🌟 Navigation bar */
-        nav {
-            background-color: #2b8a3e;
-            display: flex;
-            justify-content: center;
-            padding: 15px 0;
+        h1 { font-size: 3em; padding-top: 20px; }
+        h2 {
+            font-size: 2em;
+            border-bottom: 3px solid var(--color-secondary);
+            display: inline-block;
+            padding-bottom: 5px;
+            margin: 0 auto 40px; /* Centered h2 and added bottom margin */
+        }
+        
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background-color: var(--header-footer-bg);
+            box-shadow: 0 0 10px rgba(0,0,0,0.4); /* Stronger shadow on dark mode */
             position: sticky;
             top: 0;
             z-index: 100;
-            border-radius: 0 0 10px 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: background-color 0.3s;
         }
-
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 0;
+            gap: 15px; /* Slightly increased gap for visual balance */
+            position: relative;
+        }
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 20px;
+            padding: 10px 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
             font-weight: 600;
-            font-size: 16px;
-            transition: color 0.3s, transform 0.3s;
         }
-
         nav a:hover {
-            color: #b2f2bb;
-            transform: scale(1.1);
+            background-color: var(--color-secondary);
         }
+        .theme-toggle {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            outline: none;
+            transition: color 0.3s;
+        }
+        .theme-toggle:hover { color: var(--color-secondary); }
 
-        section {
-            padding: 40px 20px;
+        /* Media gallery styles */
+        .media-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Better responsiveness */
+            gap: 25px; /* Increased gap for better spacing */
+            margin: 40px 0; /* More top/bottom margin */
             text-align: center;
         }
-
-        /* 📖 About section */
-        #about {
-            background-color: rgba(255, 255, 255, 0.8);
+        .media-gallery a {
+            border: 3px solid var(--color-secondary); /* Added border for visual pop */
             border-radius: 10px;
-            margin: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        /* 💡 hobbies section */
-        #hobbies {
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 10px;
-            margin: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        ul li {
-            background-color: #b2f2bb;
-            margin: 10px auto;
-            width: 200px;
-            padding: 10px;
-            border-radius: 5px;
-            font-weight: 600;
-        }
-
-        /* 🖼️Outputs section */
-        #outputs {
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 10px;
-            margin: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .gallery {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: nowrap;
-            overflow-x: auto;
-            padding: 10px;
-        }
-
-        .gallery-item {
-            background: white;
-            border-radius: 10px;
-            padding: 10px;
-            width: 120px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
             transition: transform 0.3s;
-            flex-shrink: 0;
         }
-
-        .gallery-item:hover {
-            transform: scale(1.1);
+        .media-gallery a:hover {
+            transform: translateY(-5px);
         }
-
-        img {
-            width: 100px;
-            height: 100px;
-            border-radius: 10px;
-            display: block;
-            margin: 0 auto 5px;
-        }
-
-        video {
-            width: 300px;
-            height: 200px;
-            margin: 10px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-
-        /* 📞 Contact section */
-        #contact {
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            margin: 20px;
-            padding: 30px;
-            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        form {
-            max-width: 400px;
-            margin: 0 auto;
-            text-align: left;
-        }
-
-        label {
-            display: block;
-            font-weight: 600;
-            margin-top: 10px;
-        }
-
-        input, textarea {
+        .media-gallery a img {
             width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 14px;
+            height: 200px; /* Fixed height for visual consistency */
+            object-fit: cover;
+            border-radius: 7px;
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .media-gallery { grid-template-columns: 1fr; }
+            .media-gallery a img { height: 250px; }
         }
 
-        button {
-            margin-top: 15px;
-            background-color: #2b8a3e;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
+        /* Outputs / Links styles */
+        #outputs ul { list-style: none; padding: 0; max-width: 800px; margin: 40px auto; }
+        #outputs li {
+            margin: 20px 0; /* Increased margin for better separation */
+            padding: 20px; /* Increased padding */
+            border-left: 5px solid var(--color-primary);
+            background-color: #F8FFFF;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             transition: background-color 0.3s;
         }
+        [data-theme="dark"] #outputs li {
+            background-color: #383838; /* Adjusted list background for dark mode */
+        }
+        #outputs h3 { margin: 0; font-weight: 600; }
+        #outputs a {
+            color: white;
+            background-color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 700;
+            padding: 10px 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            white-space: nowrap;
+        }
+        #outputs a:hover { background-color: var(--color-secondary); }
 
-        button:hover {
-            background-color: #256c33;
+        /* --- SOCIAL CONNECT STYLES --- */
+        #social-connect {
+            text-align: center;
+            padding: 40px 0;
+        }
+        .social-icons {
+            gap: 40px; /* Increased gap for visual weight/balance */
+            margin: 40px 0; /* Increased margin */
+        }
+        .social-icons a {
+            /* No change to icons, they look balanced */
+            font-size: 3em;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 25px 0; /* Increased padding */
+            background-color: var(--header-footer-bg);
+            color: white;
+            margin-top: 50px; /* Increased top margin */
+            border-radius: 15px 15px 0 0;
+            transition: background-color 0.3s;
+        }
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
         }
     </style>
 </head>
 <body>
+    <header>
+        <nav class="container">
+            <a href="#hero">Home</a>
+            <a href="#about">About Me</a>
+            <a href="#media">Media</a>
+            <a href="#outputs">Outputs</a>
+            <a href="#social-connect">Connect</a>
+            <button class="theme-toggle" id="themeToggleBtn" title="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
 
-    <!-- 🌟 Title first -->
-    <h1>My Portfolio</h1>
+    <main class="container">
+        <section id="hero">
+            <h1>Kristine Joy Basa’s Portfolio</h1>
+            <div class="section-content" style="text-align: center;">
+                <p style="font-size: 1.2em; color: var(--color-text);">Welcome to my space. I’m a BSIT student with a passion for creative moments and technology.</p>
+            </div>
+        </section>
 
-    <!-- 🌟 Navigation Menu next -->
-    <nav>
-        <a href="#about">About Me</a>
-        <a href="#hobbies">Hobbies</a>
-        <a href="#outputs">Outputs</a>
-        <a href="#contact">Contact Me</a>
-    </nav>
+        <hr>
 
-    <!-- 📖 About Section -->
-    <section id="about">
-        <h2>About Me</h2>
-        <p><p>Hi! I’m <strong>Kristine Joy Basa a BSIT student</strong>, 19 years old. I like spending my free time listening to music, watching movies, and just relaxing or sleeping. Music helps me feel calm and inspired, while movies let me explore different stories and worlds. Sleeping is my way of recharging so I can stay active and focused. I also enjoy small creative moments, like trying out new ideas or imagining fun projects. These simple hobbies keep me balanced and happy in my everyday life.</p>
-  </section>
-    </section>
+        <section id="about">
+            <h2 style="margin: 0 auto;">About Me</h2>
+            <div class="section-content">
+                <p>Hi! I’m **Kristine Joy Basa**, a 19-year-old BSIT student. I like spending my free time listening to music, watching movies, and just relaxing or sleeping. Music helps me feel calm and inspired, while movies let me explore different stories and worlds. Sleeping is my way of recharging so I can stay active and focused. I also enjoy small creative moments, like trying out new ideas or imagining fun projects. These simple hobbies keep me balanced and happy in my everyday life.</p>
+            </div>
+        </section>
 
-    <!-- 💡 Hobbies Section -->
-    <section id="hobbies">
-    <h2>My Skills</h2>
-    <ul class="skills-list">
-      <li> Listening to Music</li>
-      <li>🎬 Watching Anime</li>
-      <li>🎨 Sketch</li>
-      <li>🍔 Eating</li>
-      <li>💤 Sleeping</li>
-      <li>💻 Exploring Technology</li>
-    </ul>
-  </section>
-    <section id="picture">
-        <h2>My Pictures</h2>
-    <div class="gallery">
-        <div class="gallery-item">
-            <img src="/fwends.jpeg" alt="Picture 1">
-            <p>This is picture 1 description.</p>
-        </div>
-        <div class="gallery-item">
-            <img src="/85469027d90911a99deca5bb8332182a_0.jpeg" alt="Picture 2">
-            <p>Just a simpple day with a smile 😊.</p>
-        </div>
-        <div class="gallery-item">
-            <img src="joy.jpg" alt="Picture 3">
-            <p>We have tree planting activities 🌳.</p>
-        </div>
-        <div class="gallery-item">
-            <img src="/20250504172817510.jpg" alt="Picture 4">
-            <p>Enjoying nature with flowers 🌻.</p>
-        </div>
-    </div>
+        <hr>
 
-        <h2>My Videos</h2>
-        <video controls>
-            <source src="/afterschool.mp4" type="video/mp4">
-        </video>
-        <video controls>
-            <source src="/VID_20251010_165436.mp4" type="video/mp4">
-        </video>
-        <video controls>
-            <source src="/lagaw.mp4" type="video/mp4">
-        </video>
-    </section>
-    <!-- Output Section -->
-  <section id="outputs">
-    <h2>My Outputs</h2>
-    <ul>
-      <li>Portfolio in Canva: <a href="https://www.canva.com/design/DAGwKK0rjqQ/zile4wDUUqdRjtRyTV0IsA/edit?" target="_blank">CLICK HERE</a></li>
-      <li>Portfolio in Figma: <a href="https://www.figma.com/proto/mpmgcphnUzPraAmP4msKph/Figma-Portfolio?node-id=1-2&starting-point-node-id=1%3A2" target="_blank">CLICK HERE</a></li>
-      <li>Figma E-Commerce: <a href="https://www.figma.com/proto/1iiU9ndhKC112MgWWcoBWd/Figma-E-commerce?node-id=1-2" target="_blank">CLICK HERE</a></li>
-    </ul>
-  </section>
+        <section id="media">
+            <h2 style="margin: 0 auto;">My Media Gallery</h2>
+            <div class="media-gallery">
+                <a href="ecommerce.jpg" class="glightbox" data-type="image">
+                    <img src="ecommerce.jpg" alt="Photo of Kristine Joy Basa" loading="lazy">
+                </a>
+                <a href="figma.jpg" class="glightbox" data-type="image">
+                    <img src="figma.jpg" alt="Photo with friends" loading="lazy">
+                </a>
+                <a href="homefigma.jpg" class="glightbox" data-type="image">
+                    <img src="homefigma.jpg" alt="Photo with a mask" loading="lazy">
+                </a>
+                <a href="" class="glightbox" data-type="image">
+                    <video src="https://youtu.be/FQdaUv95mR8?si=tUSXRDsqBsr5e9vv" alt="Video" loading="lazy"></video>
+                </a>
+            </div>
+        </section>
 
-    <!-- 📞 Contact Section -->
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <form action="#" method="post">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        <hr>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        <section id="outputs">
+            <h2 style="margin: 0 auto;">My Outputs & Projects</h2>
+            <ul>
+                <li>
+                    <h3>PORTFOLIO IN CANVA:</h3>
+                    <a href="https://www.canva.com/design" target="_blank" rel="noopener noreferrer">VIEW PROJECT</a>
+                </li>
+                <li>
+                    <h3>FIGMA E-COMMERCE:</h3>
+                    <a href="https://www.figma.com/design/zc4oBWKY135UuDOwbSSwyQ/FIGMA-E-COMMERCE-BASA-?fuid=1535176028684817961" target="_blank" rel="noopener noreferrer">VIEW PROJECT</a>
+                </li>
+                <li>
+                    <h3>PORTFOLIO IN FIGMA:</h3>
+                    <a href="https://www.figma.com/proto/zc4oBWKY135UuDOwbSSwyQ/FIGMA-E-COMMERCE-BASA-?node-id=2-80&starting-point-node-id=1%3A2" target="_blank" rel="noopener noreferrer">VIEW PROJECT</a>
+                </li>
+            </ul>
+        </section>
 
-            <label for="address">Address:</label>
-            <input type="text" id="address" name="address" placeholder="Enter your address" required>
+        <hr>
 
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="4" placeholder="Type your message..." required></textarea>
+        <section id="social-connect">
+            <h2 style="margin: 0 auto;">Connect With Me</h2>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/share/1G5hPXjdsM/" target="_blank" rel="noopener noreferrer" title="Facebook Profile">
+                    <i class="fab fa-facebook-square"></i>
+                </a>
+                <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener noreferrer" title="Instagram Profile">
+                    <i class="fab fa-instagram-square"></i>
+                </a>
+                <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer" title="Twitter/X Profile">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+            </div>
+            <p class="section-content" style="text-align: center; font-size: 1.1em;">Find me on social media or send an email to [basakristine67@gmail.com]</p>
+        </section>
+    </main>
 
-            <button type="submit">Submit</button>
-        </form>
-    </section>
     <footer>
-    <p>© 2025 My Portfolio | Designed with ❤️ byKristine Joy M. Basa BSIT-2B</p>
-  </footer>
+        <p>© 2025 Kristine Joy Basa. All Rights Reserved. | BSIT Portfolio.</p>
+    </footer>
 
+    <script src="js/glightbox.min.js"></script>
+    <script>
+        // --- Theme Toggle Logic ---
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        const currentTheme = localStorage.getItem('theme');
+
+        if (currentTheme) {
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            if (currentTheme === 'dark') {
+                themeToggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+        themeToggleBtn.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                themeToggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeToggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        });
+
+        // --- Initialize GLightbox (Needs the local JS file) ---
+        const lightbox = GLightbox({
+            selector: '.glightbox',
+            zoomable: true,
+            draggable: true,
+            loop: true
+        });
+    </script>
 </body>
 </html>
